@@ -1,0 +1,179 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+\usepackage[margin=2.5cm]{geometry}
+
+% Definición de colores
+\definecolor{maincolor}{RGB}{41, 128, 185}
+\definecolor{defcolor}{RGB}{39, 174, 96}
+\definecolor{thmcolor}{RGB}{142, 68, 173}
+\definecolor{notecolor}{RGB}{230, 126, 34}
+
+% Configuración de las cajas
+\newtcbtheorem[number within=section]{definicion}{}%
+{colback=defcolor!5,colframe=defcolor!80!black,fonttitle=\bfseries, breakable}{def}
+
+\newtcbtheorem[number within=section]{teorema}{Teorema}%
+{colback=thmcolor!5,colframe=thmcolor!80!black,fonttitle=\bfseries, breakable}{thm}
+
+\newtcolorbox{nota}[1][]{colback=notecolor!5,colframe=notecolor!80!black,fonttitle=\bfseries, breakable, title=#1}
+
+\title{\textbf{\color{maincolor}Resumen I1 - Análisis Real}}
+\author{Santiago Franulic}
+
+% Configuraciones extra
+\renewcommand{\arraystretch}{1.4}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=maincolor,
+    urlcolor=maincolor,
+    citecolor=maincolor
+}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Espacios Metricos}
+
+\subsection{Metricas}
+
+\begin{definicion*}{Métrica $\rho$}{}
+  Regla de asignación de distancias en un conjunto $X$
+  \begin{itemize}
+    \item Requisitos
+    \[
+    \begin{array}{lll}
+      1. & \left( \rho(x,y) > 0 \Leftrightarrow x \neq y \right) \wedge \left( \rho(x,y) = 0 \Leftrightarrow x = y \right) & \forall_{x \in X}\forall_{y \in X} \\
+      2. & \rho(x,y) = \rho(y,x) & \forall_{x \in X}\forall_{y \in X} \\
+      3. & \rho(x,y) \leq \rho(x,z) + \rho(z,y) & \forall_{x \in X}\forall_{y \in X}\forall_{z \in X}
+    \end{array}
+    \]
+    \item Ejemplos
+    \begin{enumerate}
+        \item Metrica discreta
+        \begin{equation*}
+            \rho(x,y) = \begin{cases}
+                1 & \text{si } x \neq y \quad \forall_{x \in X}\forall_{y \in X} \\
+                0 & \text{si } x = y \quad \forall_{x \in X}\forall_{y \in X}
+            \end{cases}
+        \end{equation*}
+        \item Normas p
+        \begin{equation*}
+            \rho(x,y) = \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{1/p}
+        \end{equation*}
+    \end{enumerate}
+  \end{itemize}
+\end{definicion*}
+
+\begin{definicion*}{Espacio Métrico $(X,\rho)$}{}
+  $ (X,\rho) \quad | \quad \rho \text{ es una métrica en } X $
+\end{definicion*}
+
+\begin{definicion*}{Subespacio Métrico $(Y,\rho_Y)$}{}
+  $ (Y,\rho_Y) \quad | \quad \forall_{x \in Y} \forall_{y \in Y} \left( Y \subseteq X \wedge \rho_Y(x,y) = \rho(x,y) \right) $
+\end{definicion*}
+
+\begin{definicion*}{Convergencia de una Sucesión en un Espacio Métrico $(X,\rho)$}{}
+  $\left( \lim_{n \to \infty} (x_n) = x \right) \Leftrightarrow \left(\lim_{n \to \infty} \rho(x_n,x) = 0 \right)$
+\end{definicion*}
+
+\begin{definicion*}{Métricas Equivalentes}{}
+  $\left( \rho_1 \sim \rho_2 \right) \Leftrightarrow \begin{cases}
+    \rho_1 \text{ converge } \Leftrightarrow \rho_2 \text{ converge } \\
+    \lambda \rho_1 \leq \rho_2 \leq \mu \rho_1 \quad \forall_{x \in X}\forall_{y \in X}\exists_{\lambda \in \mathbb{R}^+} \exists_{\mu \in \mathbb{R}^+}
+  \end{cases}$
+\end{definicion*}
+
+\newpage
+\subsection{Normas}
+
+\begin{definicion*}{Espacio vectorial}{}
+  Conjunto de vectores con operaciones de suma y multiplicación por escalares
+\end{definicion*}
+  
+\begin{definicion*}{Norma de un vector}{}
+  Función que asigna una longitud o tamaño a cada vector
+  \begin{itemize}
+    \item Requisitos
+    \[
+    \begin{array}{lll}
+      1. & \left( \|x\| > 0 \Leftrightarrow x \neq 0 \right) \wedge \left( \|x\| = 0 \Leftrightarrow x = 0 \right) & \forall_{x \in X} \\
+      2. & \|\alpha x\| = |\alpha| \|x\| & \forall_{x \in X}\forall_{\alpha \in \mathbb{R}} \\
+      3. & \|x+y\| \leq \|x\| + \|y\| & \forall_{x \in X}\forall_{y \in X}
+    \end{array}
+    \]
+    \item Teorema de Cauchy-Schwarz
+    \begin{equation*}
+      |\langle x,y \rangle| \leq \|x\| \|y\| \quad \forall_{x \in X}\forall_{y \in X}
+    \end{equation*}
+  \end{itemize}
+\end{definicion*}
+
+\newpage
+\subsection{Conjuntos Abiertos y Cerrados}
+
+\begin{definicion*}{Bolas Abiertas y Cerradas}{}
+  \[
+  \begin{array}{lll}
+    1. & \text{Bola abierta:} & B(x,r) = \{ y \in X \mid \rho(x,y) < r \} \\
+    2. & \text{Bola cerrada:} & \bar{B}(x,r) = \{ y \in X \mid \rho(x,y) \leq r \} \\
+  \end{array}
+  \]
+\end{definicion*}
+
+\begin{definicion*}{Puntos interiores y limites}{} 
+  \[
+  \begin{array}{llll}
+    1. & \text{Punto interior:} & x \in A &\mid \exists_{r > 0} (B(x,r) \cap A^c = \emptyset) \\
+    2. & \text{Punto frontera:} & x &\mid \forall_{r > 0} (B(x,r) \cap A \neq \emptyset \wedge B(x,r) \cap A^c \neq \emptyset) \\
+    3. & \text{Punto limite:} & x &\mid \forall_{r > 0} (B(x,r)\setminus\{x\} \cap A \neq \emptyset) \\
+    4. & \text{Punto exterior:} & x &\mid \exists_{r > 0} (B(x,r) \cap A = \emptyset) \\
+  \end{array}
+  \]
+\end{definicion*}
+
+\begin{definicion*}{Conjuntos Abiertos y Cerrados}{}
+  \[
+  \begin{array}{lll}
+    1. & \text{Conjunto abierto:} & A \mid \forall_{x \in A} (x \text{ es un punto interior}) \\
+    2. & \text{Conjunto cerrado:} & A \mid \forall_{x} (x \text{ es un punto frontera} \Rightarrow x \in A)
+  \end{array}
+  \]
+\end{definicion*}
+
+\begin{definicion*}{Clausura e Interior}{}
+  \[
+  \begin{array}{llll}
+    1. & \text{Clausura:} & \bar{A} &= \{ x \mid \forall_{r > 0} (B(x,r) \cap A \neq \emptyset) \} \\
+    2. & \text{Interior:} & A^o &= \{ x \mid \exists_{r > 0} (B(x,r) \cap A^c = \emptyset) \} \\
+  \end{array}
+  \]
+\end{definicion*}
+
+\begin{definicion*}{Teoremas de Conjuntos Cerrados}{}
+  \begin{itemize}
+    \item $F = \bar{F} \Leftrightarrow \forall_{\text{sucesión convergente } (x_n) \subseteq F} \left( \lim_{n \to \infty} (x_n) \in F \right)$
+    \item $F = \bar{F} \Leftrightarrow F^c = (F^c)^o$
+  \end{itemize}
+  \begin{center}
+  \begin{tabular}{l c c}
+    \hline
+    \textbf{Operación} & \textbf{Conjuntos Abiertos} & \textbf{Conjuntos Cerrados} \\
+    \hline
+    Unión finita & Abierto & Cerrado \\
+    Intersección finita & Abierto & Cerrado \\
+    Intersección infinita & No necesariamente abierto & Cerrado \\
+    Unión infinita & Abierto & No necesariamente cerrado \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{definicion*}
+
+\end{document}
