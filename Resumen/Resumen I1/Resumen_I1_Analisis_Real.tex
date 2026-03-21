@@ -24,6 +24,7 @@
 
 \title{\textbf{\color{maincolor}Resumen I1 - Análisis Real}}
 \author{Santiago Franulic}
+\date{}
 
 % Configuraciones extra
 \renewcommand{\arraystretch}{1.4}
@@ -207,6 +208,38 @@
     \end{array}
   \end{equation*}
 \end{definicion*}
+
+\newpage
+
+\subsection{Funciones Continuas}
+
+\begin{definicion*}{Continuidad de una Función}{}
+  Función continua $\Leftrightarrow$ es continua en todo punto de su dominio
+  \begin{equation*}
+    \begin{array}{cc}
+      f \text{ es continua en } x_0 &\\
+      \Leftrightarrow&\\
+      \lim_{x \to x_0}(f(x)) = f(x_0) &\\
+    \end{array}
+  \end{equation*}
+\end{definicion*}
+
+\begin{definicion*}{Álgebra de Funciones Continuas}{}
+  Las siguientes operaciones mantienen la continuidad de las funciones
+  \begin{center}
+    \begin{tabular}{l l r}
+      \hline
+      \textbf{Operación} & \textbf{Espacios y Condiciones} & \textbf{Resultado} \\
+      \hline
+      Suma Ponderada & $f,g:X \to \mathbb{R}$, $\alpha, \beta \in \mathbb{R}$ & $\alpha f + \beta g:X \to \mathbb{R}$ \\
+      Producto Puntual & $f,g:X \to \mathbb{R}$ & $f \cdot g:X \to \mathbb{R}$ \\
+      Cociente & $f,g:X \to \mathbb{R}$, $g(x) \neq 0 \, \forall x \in X$ & $\frac{f}{g}:X \to \mathbb{R}$ \\
+      Composición & $f:X \to Y$, $g:Y \to Z$ & $g \circ f:X \to Z$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{definicion*}
+
 
 
 \end{document}
