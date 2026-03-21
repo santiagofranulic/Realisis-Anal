@@ -50,9 +50,10 @@
     \item Requisitos
     \[
     \begin{array}{lll}
-      1. & \left( \rho(x,y) > 0 \Leftrightarrow x \neq y \right) \wedge \left( \rho(x,y) = 0 \Leftrightarrow x = y \right) & \forall_{x \in X}\forall_{y \in X} \\
-      2. & \rho(x,y) = \rho(y,x) & \forall_{x \in X}\forall_{y \in X} \\
-      3. & \rho(x,y) \leq \rho(x,z) + \rho(z,y) & \forall_{x \in X}\forall_{y \in X}\forall_{z \in X}
+      1. & (\rho(x,y) > 0) \Leftrightarrow (x \neq y) & \forall_{x \in X}\forall_{y \in X} \\
+      2. & (\rho(x,y) = 0) \Leftrightarrow (x = y) & \forall_{x \in X}\forall_{y \in X} \\
+      3. & \rho(x,y) = \rho(y,x) & \forall_{x \in X}\forall_{y \in X} \\
+      4. & \rho(x,y) \leq \rho(x,z) + \rho(z,y) & \forall_{x \in X}\forall_{y \in X}\forall_{z \in X}
     \end{array}
     \]
     \item Ejemplos
@@ -77,7 +78,7 @@
 \end{definicion*}
 
 \begin{definicion*}{Subespacio Métrico $(Y,\rho_Y)$}{}
-  $ (Y,\rho_Y) \quad | \quad \forall_{x \in Y} \forall_{y \in Y} \left( Y \subseteq X \wedge \rho_Y(x,y) = \rho(x,y) \right) $
+  $ (Y,\rho_Y) \quad | \quad \forall_{x \in Y} \forall_{y \in Y} \left( (Y \subseteq X) \wedge (\rho_Y(x,y) = \rho(x,y)) \right) $
 \end{definicion*}
 
 \begin{definicion*}{Convergencia de una Sucesión en un Espacio Métrico $(X,\rho)$}{}
@@ -86,7 +87,7 @@
 
 \begin{definicion*}{Métricas Equivalentes}{}
   $\left( \rho_1 \sim \rho_2 \right) \Leftrightarrow \begin{cases}
-    \rho_1 \text{ converge } \Leftrightarrow \rho_2 \text{ converge } \\
+    (\rho_1 \text{ converge }) \Leftrightarrow (\rho_2 \text{ converge }) \\
     \lambda \rho_1 \leq \rho_2 \leq \mu \rho_1 \quad \forall_{x \in X}\forall_{y \in X}\exists_{\lambda \in \mathbb{R}^+} \exists_{\mu \in \mathbb{R}^+}
   \end{cases}$
 \end{definicion*}
@@ -104,7 +105,7 @@
     \item Requisitos
     \[
     \begin{array}{lll}
-      1. & \left( \|x\| > 0 \Leftrightarrow x \neq 0 \right) \wedge \left( \|x\| = 0 \Leftrightarrow x = 0 \right) & \forall_{x \in X} \\
+      1. & \left( (\|x\| > 0) \Leftrightarrow (x \neq 0) \right) \wedge \left( (\|x\| = 0) \Leftrightarrow (x = 0) \right) & \forall_{x \in X} \\
       2. & \|\alpha x\| = |\alpha| \|x\| & \forall_{x \in X}\forall_{\alpha \in \mathbb{R}} \\
       3. & \|x+y\| \leq \|x\| + \|y\| & \forall_{x \in X}\forall_{y \in X}
     \end{array}
@@ -132,7 +133,7 @@
   \[
   \begin{array}{llll}
     1. & \text{Punto interior:} & x \in A &\mid \exists_{r > 0} (B(x,r) \cap A^c = \emptyset) \\
-    2. & \text{Punto frontera:} & x &\mid \forall_{r > 0} (B(x,r) \cap A \neq \emptyset \wedge B(x,r) \cap A^c \neq \emptyset) \\
+    2. & \text{Punto frontera:} & x &\mid \forall_{r > 0} ((B(x,r) \cap A \neq \emptyset) \wedge (B(x,r) \cap A^c \neq \emptyset)) \\
     3. & \text{Punto limite:} & x &\mid \forall_{r > 0} (B(x,r)\setminus\{x\} \cap A \neq \emptyset) \\
     4. & \text{Punto exterior:} & x &\mid \exists_{r > 0} (B(x,r) \cap A = \emptyset) \\
   \end{array}
@@ -159,8 +160,9 @@
 
 \begin{definicion*}{Teoremas de Conjuntos Cerrados}{}
   \begin{itemize}
-    \item $F = \bar{F} \Leftrightarrow \forall_{\text{sucesión convergente } (x_n) \subseteq F} \left( \lim_{n \to \infty} (x_n) \in F \right)$
-    \item $F = \bar{F} \Leftrightarrow F^c = (F^c)^o$
+    \item $(F = \bar{F}) \Leftrightarrow \forall_{\text{sucesión convergente } (x_n) \subseteq F} \left( \lim_{n \to \infty} (x_n) \in F \right)$
+    \item $(F = \bar{F}) \Leftrightarrow (F^c = (F^c)^o)$
+    \item $(U = U_Y^o) \Leftrightarrow \exists_{G\subseteq X}(G = G_X^o \wedge G\cap Y = U) \qquad \forall_{U \subseteq Y \subseteq X} $
   \end{itemize}
   \begin{center}
   \begin{tabular}{l c c}
@@ -175,5 +177,36 @@
   \end{tabular}
   \end{center}
 \end{definicion*}
+
+\newpage
+
+\section{Funciones Continuas en Espacios Métricos}
+
+\subsection{Límites en Espacios Métricos}
+
+\begin{definicion*}{Límite en un Espacios Métricos}{}
+  \begin{equation*}
+    \begin{array}{cc}
+      \lim_{x \to x_0}(f(x)) = y_0 &\\
+      \Leftrightarrow&\\
+      \forall_x\left(( \rho(x, x_0) < \delta) \Rightarrow (\sigma(f(x),y_0) < \varepsilon) \right) &\qquad \forall_{\varepsilon > 0} \exists_{\delta > 0} 
+    \end{array}
+  \end{equation*}
+  \begin{itemize}
+    \item $x_0 \in A \vee x_0 \notin A$
+    \item $(\exists$ Límite) $\Rightarrow$ (es único)
+  \end{itemize}
+\end{definicion*}
+
+\begin{definicion*}{Teorema de Limites de Funciones con Sucesiones}{}
+  \begin{equation*}
+    \begin{array}{cc}
+      \lim_{x \to x_0}(f(x)) = y_0 &\\
+      \Leftrightarrow&\\
+      (\lim_{n \to \infty} (x_n) = x_0) \Rightarrow (\lim_{n \to \infty} (f(x_n)) = y_0) & \qquad \forall_{(x_n) \subseteq A \setminus \{x_0\}}\\
+    \end{array}
+  \end{equation*}
+\end{definicion*}
+
 
 \end{document}
