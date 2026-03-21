@@ -190,7 +190,7 @@
     \begin{array}{cc}
       \lim_{x \to x_0}(f(x)) = y_0 &\\
       \Leftrightarrow&\\
-      \forall_x\left(( \rho(x, x_0) < \delta) \Rightarrow (\sigma(f(x),y_0) < \varepsilon) \right) &\qquad \forall_{\varepsilon > 0} \exists_{\delta > 0} 
+      \forall_x\left((0 < \rho(x, x_0) < \delta) \Rightarrow (\sigma(f(x),y_0) < \varepsilon) \right) &\qquad \forall_{\varepsilon > 0} \exists_{\delta > 0} 
     \end{array}
   \end{equation*}
   \begin{itemize}
@@ -240,6 +240,24 @@
   \end{center}
 \end{definicion*}
 
+\begin{definicion*}{Homeomorfismos}{}
+  $(f: X \to Y$ es homeomorfismo $) \Leftrightarrow$ ($f$ es biyectiva $\wedge$ $f$ es continua $\wedge$ $f^{-1}$ es continua).
+\end{definicion*}
 
+\begin{definicion*}{Isometría}{} 
+  \begin{equation*}
+  \begin{array}{c}
+    (f: X \to Y \text{ es isometría }) \Leftrightarrow (f \text{ es biyectiva } \wedge \rho(x,y) = \sigma(f(x),f(y)))\\
+    \therefore (f: X \to Y \text{ es isometría }) \Rightarrow (f \text{ es homeomorfismo })
+  \end{array}
+  \end{equation*}
+\end{definicion*}
+
+\begin{definicion*}{Funciones Lineales}{}
+  \begin{equation*}
+    f(\alpha_1 x_1 + \dots + \alpha_n x_n) = \alpha_1 f(x_1) + \dots + \alpha_n f(x_n) \qquad f: \mathbb{R}^n \to \mathbb{R}^m 
+  \end{equation*}
+  Ejemplo: Integral definida
+\end{definicion*}
 
 \end{document}
